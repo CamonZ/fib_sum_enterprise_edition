@@ -1,11 +1,18 @@
 require 'spec_helper'
 
 RSpec.describe ConditionalValuesAggregator do
-  it "returns the sum of all even fibonacci numbers up to a certain value" do
-    expect(described_class.aggregate(150)).to eq(188)
+  describe "summing up even fibonacci numbers" do
+    it "returns the sum for fib numbers less than 4 million" do
+      expect(subject.aggregate(4000000)).to eq(4613732)
+    end
   end
 
-  it "returns the sum of all even fibonacci numbers up to 4 million" do
-    expect(described_class.aggregate(4000000)).to eq(4613732)
+  describe "summing up odd fibonacci numbers" do
+    it "returns the sum for fib numbers less than 10" do
+      generator = Generators::Fibonacci.new
+      evaluator = Evaluators::IsOdd.new
+
+      expect(subject.aggregate(233, generator, evaluator)).to eq(188)
+    end
   end
 end
