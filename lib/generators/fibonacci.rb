@@ -4,8 +4,8 @@ class Generators::Fibonacci < Generators::Base
   attr_reader :previous_numbers, :steps
 
   def initialize
-    @previous_numbers = Array.new(2, 1)
-    @steps = 1
+    @previous_numbers = [0, 1]
+    @steps = 0
   end
 
   def next_number
