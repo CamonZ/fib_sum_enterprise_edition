@@ -8,11 +8,11 @@ RSpec.describe ConditionalValuesAggregator do
   end
 
   describe "summing up odd fibonacci numbers" do
-    it "returns the sum for fib numbers less than 10" do
+    it "returns the sum for fib numbers less than 200" do
       generator = Generators::Fibonacci.new
       evaluator = Evaluators::IsOdd.new
 
-      expect(subject.aggregate(233, generator, evaluator)).to eq(188)
+      expect(subject.aggregate(200, generator, evaluator)).to eq(188)
     end
   end
 end
